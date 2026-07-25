@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EVE ISK Engine — personalised T1 manufacturing profitability</title>
+  <meta name="description" content="A blueprint calculator that uses your characters' real blueprints and skills — and shows the formula behind every number.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <span class="logo">◆</span> EVE ISK Engine
+    </a>
+    <nav class="topnav">
+      <a href="#features">Features</a>
+      <a href="#orgs">Corporations</a>
+      <a class="console-btn" href="https://console.eve.aroncreates.com">Console →</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Local-first · EVE Online industry</p>
+      <h1>Profit numbers built from <em>your</em> blueprints, not generic assumptions.</h1>
+      <p class="sub">
+        A T1 manufacturing calculator that reads your characters' real blueprints (actual ME/TE)
+        and skills (real broker fee, sales tax, build time) — and shows the formula behind every ISK.
+      </p>
+      <div class="hero-cta">
+        <a class="console-btn big" href="https://console.eve.aroncreates.com">Open the Console →</a>
+        <a class="ghost-btn" href="#features">See how it works</a>
+      </div>
+      <div class="screenshot hero-shot" aria-label="Opportunity feed screenshot">
+        <!-- Drop a real screenshot at img/feed.png and swap this div for <img src="img/feed.png"> -->
+        <span>opportunity feed — ranked by ISK/day per slot</span>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2>What it does</h2>
+      <p class="section-sub">Click any card for a closer look.</p>
+      <div class="grid">
+        <button class="card" data-modal="m-feed">
+          <h3>Opportunity feed</h3>
+          <p>Every buildable T1 item ranked by ISK/day per production slot. Liquidity-filtered so you only see what actually sells.</p>
+        </button>
+        <button class="card" data-modal="m-detail">
+          <h3>Full cost & revenue breakdown</h3>
+          <p>Materials, job install cost, facility tax, hauling, broker fee, sales tax — patient and instant sell modes side by side.</p>
+        </button>
+        <button class="card" data-modal="m-personal">
+          <h3>Your real fit</h3>
+          <p>Owned blueprints with actual ME/TE and BPC runs, skill-accurate fees and build times. No ME10/TE20 guessing.</p>
+        </button>
+        <button class="card" data-modal="m-region">
+          <h3>Region data on demand</h3>
+          <p>Only the regions you select get ingested, refreshed at ESI cadence. Reads player-structure books your characters can dock at.</p>
+        </button>
+        <button class="card" data-modal="m-tts">
+          <h3>Time-to-sell model</h3>
+          <p>30-day median volume, sell-wall depth, and price volatility — an honest estimate of how long your stock takes to move.</p>
+        </button>
+        <button class="card" data-modal="m-transparency">
+          <h3>Every number is auditable</h3>
+          <p>Freshness timestamps on each figure, expandable math everywhere. No value without a visible source or assumption.</p>
+        </button>
+      </div>
+    </section>
+
+    <section id="orgs" class="orgs">
+      <h2>Corporations running the numbers</h2>
+      <p class="section-sub">Industrialists and corp logistics leads across New Eden.</p>
+      <div class="tiles">
+        <!-- ponytail: static placeholder tiles; swap names/logos when you have real ones -->
+        <div class="tile">Karura Industries</div>
+        <div class="tile">Provi Manufacturing Co.</div>
+        <div class="tile">Jita Logistics Union</div>
+        <div class="tile">Amarr Foundries</div>
+        <div class="tile">Nullsec Fabrication</div>
+        <div class="tile">Wormhole Works</div>
+        <div class="tile">Minmatar Reclamation</div>
+        <div class="tile">Deep Space Assembly</div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>Registration is invite-only for now.</h2>
+      <p>The console is gated. If you have access, jump straight in.</p>
+      <a class="console-btn big" href="https://console.eve.aroncreates.com">Open the Console →</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>EVE ISK Engine</span>
+    <span class="disclaimer">Not affiliated with CCP Games. EVE Online is a trademark of CCP hf.</span>
+  </footer>
+
+  <!-- Feature modals: native <dialog>, opened by the small script below -->
+  <dialog id="m-feed" class="modal">
+    <h3>Opportunity feed</h3>
+    <div class="screenshot"><span>opportunity feed screenshot</span></div>
+    <p>All buildable T1 items in one ranked list. Default sort is ISK/day per slot; switch to profit/run, margin %, or profit at achievable daily volume. Filter by market group, min margin, max capital, max build time, or owned-blueprints-only. Illiquid items are hidden, not just pushed down.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <dialog id="m-detail" class="modal">
+    <h3>Full cost & revenue breakdown</h3>
+    <div class="screenshot"><span>opportunity detail screenshot</span></div>
+    <p>Line-by-line materials (qty, unit price, total, m³), job install cost, facility tax, and hauling when input and output markets differ. Revenue in two modes: patient (list a sell order, net of broker fee and sales tax) and instant (fill buy orders, net of sales tax). Net profit and margin for both.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <dialog id="m-personal" class="modal">
+    <h3>Your real fit</h3>
+    <div class="screenshot"><span>personal fit screenshot</span></div>
+    <p>Log in with EVE SSO (read blueprints + read skills, nothing else). The engine uses your actual owned blueprints with real ME/TE and BPC runs, and your skills for accurate broker fee, sales tax, and job durations. Don't own the blueprint? It falls back to ME10/TE20, adjustable per item and globally, and always flags the assumption.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <dialog id="m-region" class="modal">
+    <h3>Region data on demand</h3>
+    <div class="screenshot"><span>market context screenshot</span></div>
+    <p>Pick an input market (materials priced here) and an output market (product sold here) — each a region, optionally narrowed to a station. One-click "price inputs from Jita." Only selected regions are ingested; warm regions refresh at ESI cadence (~5 min), history daily, and go cold after 7 days unused. Reads the full book of any player structure a linked character can dock at.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <dialog id="m-tts" class="modal">
+    <h3>Time-to-sell model</h3>
+    <div class="screenshot"><span>liquidity panel screenshot</span></div>
+    <p>Daily volume is the trailing 30-day median (median, not mean, to resist spikes). TTS = quantity ÷ (daily volume × capture share), with an adjustable default capture share of 10%. Patient mode adds a queue penalty from the sell wall ahead of your listing price. Regional-history limitations are disclosed right next to the figure.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <dialog id="m-transparency" class="modal">
+    <h3>Every number is auditable</h3>
+    <div class="screenshot"><span>expandable math screenshot</span></div>
+    <p>Reference prices are robust — a volume-weighted percentile of the order book, never a single best order, outliers excluded. Every displayed value is net of fees, carries a freshness timestamp per data source, and expands to show the exact math. No figure without a visible source or assumption.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <script>
+    // ponytail: native <dialog> for Esc/backdrop/focus-trap; ~10 lines is the whole modal system
+    for (const btn of document.querySelectorAll("[data-modal]")) {
+      btn.addEventListener("click", () => document.getElementById(btn.dataset.modal).showModal());
+    }
+    for (const dlg of document.querySelectorAll("dialog.modal")) {
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); // click backdrop to close
+    }
+  </script>
+</body>
+</html>
