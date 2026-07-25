@@ -115,11 +115,13 @@ h3 { margin: 0 0 8px; font-size: 19px; }
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 28px 18px;
+  padding: 24px 18px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
   text-align: center;
   color: var(--muted);
   font-weight: 600;
 }
+.tile img { width: 44px; height: 44px; }
 .tile:hover { color: var(--text); border-color: var(--accent-dim); }
 
 /* ---- closing ---- */
