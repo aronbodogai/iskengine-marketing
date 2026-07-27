@@ -122,7 +122,6 @@ h3 { margin: 0 0 8px; font-size: 19px; }
   font-weight: 600;
 }
 .tile img { width: 44px; height: 44px; }
-.tile:hover { color: var(--text); border-color: var(--accent-dim); }
 
 /* ---- closing ---- */
 .closing { text-align: center; }
