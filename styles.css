@@ -90,8 +90,12 @@ h3 { margin: 0 0 8px; font-size: 19px; }
   color: var(--muted); font-size: 14px; letter-spacing: .04em;
   box-shadow: 0 24px 60px rgba(0,0,0,.45);
 }
-.screenshot img, .screenshot > img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
-.hero-shot { max-width: 960px; margin: 0 auto; }
+/* A real screenshot sets its own height — the 16/9 frame is only for the empty placeholders.
+   These captures are far wider than 16/9, so `cover` would crop a full-width table to nothing. */
+.screenshot:has(img) { aspect-ratio: auto; background: none; display: block; overflow: hidden; }
+.screenshot img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 12px; }
+/* Full container width — a 2000px-wide table capture is barely legible squeezed into 960. */
+.hero-shot { margin: 0 auto; }
 
 /* ---- feature grid ---- */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
@@ -138,11 +142,13 @@ footer {
 
 /* ---- modals ---- */
 dialog.modal {
-  max-width: 560px; width: calc(100% - 32px);
+  /* Wide enough for the real screenshots to stay readable; the prose sits in a narrower column. */
+  max-width: 1040px; width: calc(100% - 32px);
   background: var(--panel); color: var(--text);
   border: 1px solid var(--line); border-radius: 14px;
   padding: 24px;
 }
+dialog.modal h3, dialog.modal p { max-width: 68ch; }
 dialog.modal::backdrop { background: rgba(4, 8, 14, .7); backdrop-filter: blur(3px); }
 dialog.modal .screenshot { margin: 12px 0 16px; }
 dialog.modal p { color: var(--muted); }

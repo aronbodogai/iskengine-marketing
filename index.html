@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EVE ISK Engine — personalised T1 manufacturing profitability</title>
+  <title>EVE ISK Engine — every character, every account, one industry & PI view</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta name="description" content="A blueprint calculator that uses your characters' real blueprints and skills — and shows the formula behind every number.">
+  <meta name="description" content="Pool every character across every account into one screen: all industry jobs, all free slots, all PI colonies — plus profit numbers built from your real blueprints and skills.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,18 +22,20 @@
 
   <main id="top">
     <section class="hero">
-      <h1>Profit numbers built from <em>your</em> blueprints.</h1>
+      <h1>Every character. Every account.<br>One industry and PI screen.</h1>
       <p class="sub">
-        A manufacturing calculator that reads your characters' real blueprints (actual ME/TE)
-        and skills (real broker fee, sales tax, build time) — and shows profit for each blueprint.
+        Stop alt-tabbing between clients to find the idle research slot and the extractor that
+        stopped two days ago. Link every character you own — across as many accounts as you like —
+        and see all industry jobs, all free slots, and every PI colony in one pooled view.
+        Blueprints and skills pool the same way, so profit numbers come from your <em>real</em>
+        ME/TE and your <em>real</em> fees.
       </p>
       <div class="hero-cta">
         <a class="console-btn big" href="https://console-eve.aroncreates.com">Open the Console →</a>
         <a class="ghost-btn" href="#features">See how it works</a>
       </div>
-      <div class="screenshot hero-shot" aria-label="Opportunity feed screenshot">
-        <!-- Drop a real screenshot at img/feed.png and swap this div for <img src="img/feed.png"> -->
-        <span>opportunity feed — ranked by ISK/day per slot</span>
+      <div class="screenshot hero-shot">
+        <img src="img/industry.png" width="2000" height="882" alt="The industry page: job slots per character showing free capacity, and ten running research jobs across characters with product, activity, runs, location, cost, and progress.">
       </div>
     </section>
 
@@ -41,6 +43,18 @@
       <h2>What it does</h2>
       <p class="section-sub">Click any card for a closer look.</p>
       <div class="grid">
+        <button class="card" data-modal="m-industry">
+          <h3>All industry jobs, one list</h3>
+          <p>Every manufacturing, science, and reaction job across every character on every account — with time left, and how many slots each character still has free.</p>
+        </button>
+        <button class="card" data-modal="m-pi">
+          <h3>All PI colonies, one list</h3>
+          <p>Every planet on every alt, sorted by what needs you: expiring extractors, filling storage, and what's staged in launchpads waiting on a hauler.</p>
+        </button>
+        <button class="card" data-modal="m-pooling">
+          <h3>Characters pool, not compete</h3>
+          <p>Blueprints across the whole selection are pooled and each skill counts at its best level. Toggle any character in or out and every number re-derives.</p>
+        </button>
         <button class="card" data-modal="m-feed">
           <h3>Opportunity feed</h3>
           <p>Every buildable T1 item ranked by ISK/day per production slot. Liquidity-filtered so you only see what actually sells.</p>
@@ -51,7 +65,7 @@
         </button>
         <button class="card" data-modal="m-personal">
           <h3>Your real fit</h3>
-          <p>Owned blueprints with actual ME/TE and BPC runs, skill-accurate fees and build times. No ME10/TE20 guessing.</p>
+          <p>Owned blueprints from anywhere in your selection, with actual ME/TE and BPC runs, skill-accurate fees and build times. No ME10/TE20 guessing.</p>
         </button>
         <button class="card" data-modal="m-region">
           <h3>Region data on demand</h3>
@@ -99,24 +113,45 @@
   </footer>
 
   <!-- Feature modals: native <dialog>, opened by the small script below -->
+  <dialog id="m-industry" class="modal">
+    <h3>All industry jobs, one list</h3>
+    <div class="screenshot"><img src="img/industry.png" width="2000" height="882" loading="lazy" alt="Job slots per character with free counts, above a table of running jobs across characters."></div>
+    <p>One table for every job your characters have running — manufacturing, ME/TE research, copying, invention, and reactions — no matter which account the character sits on. Each row shows the character, what's being built, where, how far along it is, and how long is left. Above it, slot usage per character per category, derived from that character's actual Mass Production / Laboratory Operation / Mass Reactions levels, so an idle slot is obvious at a glance instead of something you find by logging in.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <dialog id="m-pi" class="modal">
+    <h3>All PI colonies, one list</h3>
+    <div class="screenshot"><img src="img/planets.png" width="2000" height="467" loading="lazy" alt="The planets page: four colonies with status, character, planet, extractor time remaining, storage fill bars, launchpad contents, quantity, and estimated ISK."></div>
+    <p>Every planetary colony across every character, ranked by how soon it needs you. Per colony: time until the extractor program ends, how full the storage and launchpads are, what's being produced, and the value of what's staged for export. Six characters with five planets each is thirty colonies and thirty separate logins — here it's one screen with a count of how many need attention.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
+  <dialog id="m-pooling" class="modal">
+    <h3>Characters pool, not compete</h3>
+    <div class="screenshot"><img src="img/collection.png" width="2000" height="379" loading="lazy" alt="Blueprint collection table with an Owners column showing which characters hold each blueprint, alongside ME/TE, price, and profit per run."></div>
+    <p>Link as many characters as you want with EVE SSO — there is no per-account boundary, they all land in the same selection. Blueprints across the selection are pooled, so a BPO on your research alt counts when you price a build on your main. Each skill counts at its best level anywhere in the selection. Narrow the selection to one character and everything — profit, fees, build times, slots, planets — re-derives for exactly that character.</p>
+    <form method="dialog"><button class="ghost-btn">Close</button></form>
+  </dialog>
+
   <dialog id="m-feed" class="modal">
     <h3>Opportunity feed</h3>
-    <div class="screenshot"><span>opportunity feed screenshot</span></div>
+    <div class="screenshot"><img src="img/collection.png" width="2000" height="379" loading="lazy" alt="Blueprints ranked by profit per run, with category, tech level, ME/TE, owners, price source, and closest station."></div>
     <p>All buildable T1 items in one ranked list. Default sort is ISK/day per slot; switch to profit/run, margin %, or profit at achievable daily volume. Filter by market group, min margin, max capital, max build time, or owned-blueprints-only. Illiquid items are hidden, not just pushed down.</p>
     <form method="dialog"><button class="ghost-btn">Close</button></form>
   </dialog>
 
   <dialog id="m-detail" class="modal">
     <h3>Full cost & revenue breakdown</h3>
-    <div class="screenshot"><span>opportunity detail screenshot</span></div>
+    <div class="screenshot"><img src="img/blueprint.png" width="2000" height="1076" loading="lazy" alt="Blueprint calculator: material rows with sourcing, then cost breakdown, patient revenue, and instant revenue side by side."></div>
     <p>Line-by-line materials (qty, unit price, total, m³), job install cost, facility tax, and hauling when input and output markets differ. Revenue in two modes: patient (list a sell order, net of broker fee and sales tax) and instant (fill buy orders, net of sales tax). Net profit and margin for both.</p>
     <form method="dialog"><button class="ghost-btn">Close</button></form>
   </dialog>
 
   <dialog id="m-personal" class="modal">
     <h3>Your real fit</h3>
-    <div class="screenshot"><span>personal fit screenshot</span></div>
-    <p>Log in with EVE SSO (read blueprints + read skills, nothing else). The engine uses your actual owned blueprints with real ME/TE and BPC runs, and your skills for accurate broker fee, sales tax, and job durations. Don't own the blueprint? It falls back to ME10/TE20, adjustable per item and globally, and always flags the assumption.</p>
+    <div class="screenshot"><img src="img/blueprint.png" width="2000" height="1076" loading="lazy" alt="Blueprint header showing the owning character, its real ME/TE and BPO status, and a badge reading skills: best of 2 characters."></div>
+    <p>Log in with EVE SSO once per character — read-only ESI scopes, plus the two that let it set a waypoint or open a market window in your client. Nothing that can move an asset or place an order. The engine uses the actual owned blueprints across your whole selection with real ME/TE and BPC runs, and your skills for accurate broker fee, sales tax, and job durations. Don't own the blueprint? It falls back to ME10/TE20, adjustable per item and globally, and always flags the assumption.</p>
     <form method="dialog"><button class="ghost-btn">Close</button></form>
   </dialog>
 
@@ -129,14 +164,14 @@
 
   <dialog id="m-tts" class="modal">
     <h3>Time-to-sell model</h3>
-    <div class="screenshot"><span>liquidity panel screenshot</span></div>
+    <div class="screenshot"><img src="img/blueprint.png" width="2000" height="1076" loading="lazy" alt="The liquidity and time-to-sell panel alongside time and throughput, showing TTS in days and ISK per day per slot."></div>
     <p>Daily volume is the trailing 30-day median (median, not mean, to resist spikes). TTS = quantity ÷ (daily volume × capture share), with an adjustable default capture share of 10%. Patient mode adds a queue penalty from the sell wall ahead of your listing price. Regional-history limitations are disclosed right next to the figure.</p>
     <form method="dialog"><button class="ghost-btn">Close</button></form>
   </dialog>
 
   <dialog id="m-transparency" class="modal">
     <h3>Every number is auditable</h3>
-    <div class="screenshot"><span>expandable math screenshot</span></div>
+    <div class="screenshot"><img src="img/blueprint.png" width="2000" height="1076" loading="lazy" alt="The assumptions and freshness panel spelling out how skills were pooled and why the broker fee used the neutral standings rate."></div>
     <p>Reference prices are robust — a volume-weighted percentile of the order book, never a single best order, outliers excluded. Every displayed value is net of fees, carries a freshness timestamp per data source, and expands to show the exact math. No figure without a visible source or assumption.</p>
     <form method="dialog"><button class="ghost-btn">Close</button></form>
   </dialog>
